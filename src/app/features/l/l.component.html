@@ -8,28 +8,10 @@
   <section class="mt-4">
     <h3 class="mb-4 font-bold">Example:</h3>
     <div class="mt-4">
-      <p class="my-4">
-        Suppose we have an interface called Animal which has a method
-        makeSound(). We also have two subclasses, Dog and Cat, which inherit
-        from Animal. Both Dog and Cat implement the makeSound() method, but they
-        do so in different ways.
-      </p>
-      <app-code-block [tsText]="example.ts1"> </app-code-block>
-
-      <p class="my-4">
-        Notice that both Dog and Cat inherit from Animal and implement the
-        makeSound() method. According to the LSP, we should be able to
-        substitute an instance of Dog or Cat wherever an instance of Animal is
-        expected, without affecting the correctness of the program. For example,
-        let's say we have a function that takes an Animal object as a parameter:
-      </p>
-      <app-code-block [tsText]="example.ts2"> </app-code-block>
-
-      <p class="my-4">
-        We can call this function with either a Dog or Cat object, and it will
-        behave correctly:
-      </p>
-      <app-code-block [tsText]="example.ts3"> </app-code-block>
+      <app-code-block [tsText]="Linterface"> </app-code-block>
+    </div>
+    <div class="mt-4">
+      <app-code-block [data]="example"> </app-code-block>
     </div>
   </section>
 </section>
