@@ -8,33 +8,6 @@
   </p>
   <section class="mt-4">
     <h3 class="mb-4 font-bold">Example:</h3>
-    <div class="mt-4">
-      <p class="my-4">
-        Suppose we have a Zoo class which is responsible for managing a
-        collection of animals. The Zoo class depends on the Animal class to
-        create and manage instances of different types of animals.
-      </p>
-      <app-code-block [tsText]="example.ts1"> </app-code-block>
-
-      <p class="my-4">
-        Notice that we have defined an interface called AnimalInterface that
-        defines speak() property used by the Zoo class. We have also created
-        separate Dog and Cat classes that implement the AnimalInterface
-        interface. By defining an interface for the Animal class and injecting
-        it into the Zoo class, we have inverted the dependency between the Zoo
-        and Animal classes. Now, the Zoo depends on an abstraction (the
-        AnimalInterface interface) rather than a concrete implementation (Dog or
-        Cat), making it easier to add new types of animals in the future.
-      </p>
-      <app-code-block [tsText]="example.ts2"> </app-code-block>
-
-      <p class="my-4">
-        In this example, we have created a Bird class that implements the
-        AnimalInterface interface and added it to our Zoo object. By decoupling
-        the Zoo class from the concrete implementation of the Animal class, we
-        have made it easier to add new types of animals in the future, while
-        adhering to the Dependency Inversion Principle.
-      </p>
-    </div>
+    <app-code-block [data]="example"> </app-code-block>
   </section>
 </section>
