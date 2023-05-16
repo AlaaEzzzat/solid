@@ -1,0 +1,52 @@
+<div
+  class="bg-white border p-4 rounded-xl block whitespace-pre relative h-full max-h-full"
+>
+  <p-tabView
+    *ngIf="!otherText; else elseBlock"
+    [(activeIndex)]="_activeText!"
+    styleClass="code-tabview"
+  >
+    <ng-container *ngIf="!data">
+      <!-- HTML Text -->
+      <p-tabPanel header="HTML" *ngIf="htmlText">
+        <code class="flex flex-col">{{ htmlText }} </code>
+      </p-tabPanel>
+
+      <!-- TS Text -->
+      <p-tabPanel header="TS" *ngIf="tsText">
+        <code class="flex flex-col" [innerHTML]="tsText | safehtml"> </code>
+      </p-tabPanel>
+    </ng-container>
+    <ng-container *ngIf="data">
+      <p-tabPanel *ngFor="let tab of data" [header]="tab.name">
+        <code class="flex flex-col">{{ tab.code }} </code>
+      </p-tabPanel>
+    </ng-container>
+  </p-tabView>
+
+  <!-- Other text -->
+  <ng-template #elseBlock>
+    <div
+      class="max-w-full overflow-x-scroll lg:overflow-x-auto lg:pt-0 pt-10 pb-5 md:pb-0"
+    >
+      <code class="flex flex-col lg:p-4" [innerHTML]="otherText | safehtml">
+      </code>
+    </div>
+  </ng-template>
+
+  <!-- Copy button -->
+  <cic-button
+    btnIcon="pi-copy !text-2xl"
+    class="absolute right-4 {{
+      otherText ? 'lg:top-1/2 lg:transform lg:-translate-y-1/2 top-4' : 'top-4'
+    }}"
+    [isOutline]="true"
+    styleClass="!border-0 !text-[var(--primary-color)] {{
+      otherText ? '!p-0' : '!p-2'
+    }}"
+    (click)="copyToClipBoard()"
+    pTooltip="Copy to clipboard"
+    tooltipPosition="left"
+    label="{{ otherText ? 'Copy' : '' }}"
+  ></cic-button>
+</div>

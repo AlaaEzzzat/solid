@@ -1,0 +1,39 @@
+<section class="bg-white p-8">
+  <h2>Interface Segregation Principle (ISP):</h2>
+  <p>
+    Clients should not be forced to depend on interfaces they do not use. This
+    means that you should not include methods in an interface that are not
+    relevant to all its implementers.
+  </p>
+  <section class="mt-4">
+    <h3 class="mb-4 font-bold">Example:</h3>
+    <div class="mt-4">
+      <p class="my-4">
+        Suppose we have an interface called Animal which has several methods,
+        including eat(), sleep(), and makeSound(). We also have two classes that
+        implement the Animal interface: Dog and Cat. However, Dog does not need
+        the makeSound() method, while Cat does not need the sleep() method.
+      </p>
+      <app-code-block [tsText]="example.ts1"> </app-code-block>
+
+      <p class="my-4 mb-2">
+        Notice that the Animal interface has been separated into smaller
+        interfaces, each representing a specific behavior. Dog only implements
+        the eat() method, while Cat implements both eat() and makeSound().
+      </p>
+      <p class="mb-4">
+        According to the ISP, clients should not be forced to depend on methods
+        they do not use. By separating the Animal interface into smaller, more
+        specialized interfaces, we allow clients to depend only on the methods
+        they need, making our code more modular, flexible, and maintainable.
+      </p>
+      <app-code-block [tsText]="example.ts2"> </app-code-block>
+
+      <p class="my-4">
+        We can call this function with either a Dog or Cat object, and it will
+        behave correctly:
+      </p>
+      <app-code-block [tsText]="example.ts3"> </app-code-block>
+    </div>
+  </section>
+</section>

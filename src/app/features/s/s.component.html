@@ -1,0 +1,19 @@
+<section class="bg-white p-8">
+  <h2>Single Responsibility Principle (SRP):</h2>
+  <p>
+    A class should have only one reason to change. In other words, a class
+    should be responsible for only one thing.
+  </p>
+  <section class="mt-4">
+    <h3 class="mb-4 font-bold">Example:</h3>
+    <app-code-block [data]="example"> </app-code-block>
+    <p class="mt-4">
+      <span class="block font-bold">In this example : </span>
+      The UserListComponent is responsible for rendering the UI and handling
+      user interactions, while the UserService is responsible for fetching and
+      manipulating data. By separating these responsibilities, we achieve the
+      Single Responsibility Principle, making our code more modular and easier
+      to maintain and test.
+    </p>
+  </section>
+</section>
