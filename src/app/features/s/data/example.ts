@@ -1,52 +1,87 @@
 export const Sexample: Array<CodeTab> = [
   {
-    name: 'UserListComponent.html',
+    name: 'Without Single Resposability',
     code: `
-  <h1>User List</h1>
-  <ul>
-    <li *ngFor="let user of users">{{ user.name }}</li>
-  </ul>
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GeneralService {
+  constructor() {}
+
+  login(mobile: string, password: string): Observable<User> {
+    //implement your own login
+  }
+
+  register(user: any): Observable<any> {
+    //implement your own login
+  }
+
+  logout(): Observable<any> {
+    //implement your own login
+  }
+
+  getReceipt(id: string): Observable<any> {
+  //implement your own login
+  }
+  payAmount(paymentDetails: any): Observable<any> {
+    //implement your own login
+  }
+    
+  printReciept(element: ElementRef) {
+    //implement your own login
+  }
+}
+    
 `,
   },
   {
-    name: 'UserListComponent.ts',
-    code: `import { Component, OnInit } from '@angular/core';
-  import { UserService } from './user.service';
-  import { User } from './user';
-  
-  @Component({
-    selector: 'app-user-list',
-    templateUrl: './user-list.component.html',
-  })
-  export class UserListComponent implements OnInit {
-    users: User[];
-  
-    constructor(private userService: UserService) {}
-  
-    ngOnInit() {
-      this.userService.getUsers().subscribe((users) => (this.users = users));
-    }
-  }`,
-  },
-  {
-    name: 'service.ts',
+    name: 'With Single Responsability',
     code: `import { Injectable } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-  import { Observable } from 'rxjs';
-  import { User } from './user';
-  
-  @Injectable({
-    providedIn: 'root',
-  })
-  export class UserService {
-    private apiUrl = 'https://api.example.com/users';
-  
-    constructor(private http: HttpClient) {}
-  
-    getUsers(): Observable<User[]> {
-      return this.http.get<User[]>(this.apiUrl);
-    }
-  }`,
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  constructor() {}
+
+  login(mobile: string, password: string): Observable<User> {
+    //implement your own login
+  }
+
+  register(user: any): Observable<any> {
+    //implement your own login
+  }
+
+  logout(): Observable<any> {
+    //implement your own login
+  }
+    
+} 
+    /////////////////////////////////////////////////
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PaymentService {
+
+  constructor() {}
+
+  getReceipt(id: string): Observable<any> {
+  //implement your own login
+  }
+  payAmount(paymentDetails: any): Observable<any> {
+    //implement your own login
+  }
+    
+  printReciept(element: ElementRef) {
+    //implement your own login
+  }
+    
+}
+    `,
   },
 ];
 

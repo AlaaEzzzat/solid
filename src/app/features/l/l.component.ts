@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from 'src/app/@shared/shared.module';
-import { Lexample } from './data';
+import { Lexamples } from './data';
 
 @Component({
   standalone: true,
@@ -10,7 +10,10 @@ import { Lexample } from './data';
   styleUrls: ['./l.component.scss'],
 })
 export class LComponent {
+  Linterface: string = `interface Notification {
+    SendNotification(): void;
+  }`;
   get example() {
-    return Lexample;
+    return Lexamples;
   }
 }
