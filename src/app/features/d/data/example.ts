@@ -4,47 +4,35 @@ export const Dexample: Array<CodeTab> = [
   {
     name: 'Without Dependancy Inversion',
     code: `
-    @Injectable()
-    export class HttpDataProvider {
-      constructor(private http: HttpClient) {
-      }
-    
-      getUsersFromApi(): Observable<User[]> {
-        return this.http.get<User[]>('/api/users');
-      }
-    
-      getUserByIdFromApi(userId: string): Observable<User> {
-        return this.http.get<User>('/api/users/'+this.userId);
-      }
-    }
-    --------------------------------------------------------
-    @Injectable()
-    export class JsonDataProvider {
-      constructor(private http: HttpClient) {
-      }
-    
-      getUsersFromJson(): Observable<User[]> {
-        return localStorage.getItem('users');
-      }
-    
-      getUserByIdFromJson(userId: string): Observable<User> {
-        const users =localStorage.getItem('users');
-        return  this.users.find(user=>user.id === userId);
-      }
-    }
-    
-    ---------------------------------------------------
+  
     @Injectable()
     export class DataService {
-      constructor(private dataProvider: HttpDataProvider ) {}
+
+    // if we need to get from Api
     
-      getUsers(): Observable<User[]> {
-        return this.dataProvider.getUsersFromApi();
-      }
+    constructor(private http: HttpClient) {}
     
-      getUserById(userId: string): Observable<User> {
-        return this.dataProvider.getUserByIdFromApi(userId);
-      }
+    getUsers(): Observable<User[]> {
+      return this.http.get<User[]>('/api/users');
+    }
+  
+    getUserById(userId: string): Observable<User> {
+      return this.http.get<User>('/api/users/'+this.userId);
+    }
+    ----------------------------------------------------
+    //if we need to get data from local storage
+    
+    constructor() {}
+    
+    getUsers(): Observable<User[]> {
+      return localStorage.getItem('users');
+    }
+  
+    getUserById(userId: string): Observable<User> {
+      const users =localStorage.getItem('users');
+      return  this.users.find(user=>user.id === userId);
+    }
+
     }`,
   },
   {
