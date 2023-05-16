@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedRoutingModule } from './shared-routing.module';
 import { CodeBlockComponent } from './components/code-block/code-block.component';
-import { CICButtonModule } from '@cic-garage/cic-core-library';
+import {
+  CICButtonModule,
+  CICTabviewModule,
+} from '@cic-garage/cic-core-library';
 
 import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
@@ -17,10 +20,11 @@ import { SafehtmlPipe } from './pipes/safehtml/safehtml.pipe';
     FormsModule,
     SharedRoutingModule,
     CICButtonModule,
+    CICTabviewModule,
     TooltipModule,
     TabViewModule,
     AccordionModule,
   ],
-  exports: [CodeBlockComponent],
+  exports: [CodeBlockComponent, CICTabviewModule],
 })
 export class SharedModule {}

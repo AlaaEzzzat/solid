@@ -5,7 +5,7 @@ import { CICTabviewModule } from '@cic-garage/cic-core-library';
 import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
+  imports: [SharedModule, FeaturesRoutingModule],
   declarations: [ShellComponent],
-  imports: [SharedModule, FeaturesRoutingModule, CICTabviewModule],
 })
 export class FeaturesModule {}

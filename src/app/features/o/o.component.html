@@ -7,9 +7,10 @@
   </p>
   <section class="mt-4">
     <h3 class="mb-4 font-bold">Example:</h3>
-    <app-code-block [tsText]="example.ts"> </app-code-block>
+    <app-code-block [data]="data"></app-code-block>
     <p class="mt-4">
       <span class="block font-bold">In this example : </span>
+
       We define a contract for a Logger interface that has a single log method.
       We then implement the contract in two different logger classes,
       ConsoleLogger and FileLogger, each with its own implementation of the log

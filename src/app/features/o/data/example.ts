@@ -1,42 +1,65 @@
 export const Oexample = {
-  ts: `// Define a contract for a logger
-    export interface Logger {
-      log(message: string): void;
-    }
-    
-    // Implement the contract in a console logger
-    @Injectable({ providedIn: 'root' })
-    export class ConsoleLogger implements Logger {
-      log(message: string): void {
-        console.log(message);
-      }
-    }
-    
-    // Implement the contract in a file logger
-    @Injectable({ providedIn: 'root' })
-    export class FileLogger implements Logger {
-      private readonly logFile = 'app.log';
-    
-      log(message: string): void {
-        // Write the message to a log file
-        // ...
-      }
-    }
-    
-    // Use the logger in a service without depending on a specific implementation
-    @Injectable({ providedIn: 'root' })
-    export class ProductService {
-      constructor(private logger: Logger) {}
-    
-      getProducts(): Product[] {
-        try {
-          // Get the products from the server
-          // ...
-          return products;
-        } catch (error) {
-          this.logger.log("Error");
-          return [];
-        }
-      }
-    }`,
+  ts: `import { Component } from "@angular/core";
+
+  @Component({
+     selector: "app-openclose",
+    template: '
+    <header>Header</header>
+      <h2>Open/Close</h2>
+    <footer>Footer</footer>
+
+    <header>Header</header>
+      <input label="Comment" placeholder="please add your comment.......">
+      </input>
+    <footer>Footer</footer>
+
+    <header>Header</header>
+      <button>Send</button>
+    <footer>Footer</footer>
+    ',
+    styleUrls: ['./openclose.component.scss'],
+  })
+export class OpenCloseComponent {}`,
+  ts2: `import { Component } from "@angular/core";
+
+    @Component({
+      selector: "app-openclose",
+      template: '
+      <header>Header</header>
+        <ng-content></ng-content>
+      <footer>Footer</footer>
+      ',
+      styleUrls: ['./openclose.component.scss'],
+    })
+export class OpenCloseComponent {}
+
+
+ ....................................
+
+
+import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'app-root',
+     template: '
+    <main class="content">
+    <app-openclose>
+        <h2>Open/Close</h2>
+    </app-openclose>
+    <app-openclose>
+       <input label="Comment" placeholder="please add your comment.......">
+       </input>
+    </app-openclose>
+    <app-openclose>
+       <button>Send</button>
+    </app-openclose>
+    <app-openclose>
+       More Content
+    </app-openclose>
+    </main>
+  ',
+  styleUrls: ['./app.component.scss']
+  ],
+})
+export class AppComponent {}`,
 };
