@@ -7,19 +7,6 @@
   </p>
   <section class="mt-4">
     <h3 class="mb-4 font-bold">Example:</h3>
-    <app-code-block [tsText]="example.ts"> </app-code-block>
-    <p class="mt-4">
-      <span class="block font-bold">In this example : </span>
-      We define a contract for a Logger interface that has a single log method.
-      We then implement the contract in two different logger classes,
-      ConsoleLogger and FileLogger, each with its own implementation of the log
-      method. Next, we use the Logger interface in a ProductService without
-      depending on a specific implementation. This makes the ProductService open
-      for extension, since we can easily swap out the logger implementation
-      without modifying the ProductService code. By following the OCP principle
-      in this example, we create a more flexible and maintainable system, since
-      we can easily add new logger implementations in the future without
-      modifying the existing code.
-    </p>
+    <app-code-block [data]="data"></app-code-block>
   </section>
 </section>
